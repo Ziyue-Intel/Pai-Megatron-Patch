@@ -2,7 +2,7 @@
 
 set -ex
 
-export CUDA_VISIBLE_DEVICES=3
+export CUDA_VISIBLE_DEVICES=1
 START_TIME=$SECONDS
 MASTER_ADDR=localhost
 MASTER_PORT=$(shuf -n 1 -i 10000-65535)
@@ -148,7 +148,7 @@ elif [ $MODEL_SIZE = A3B ]; then
         --moe-ffn-hidden-size ${MOE_INTERMEDIATE_SIZE} \
         --moe-router-load-balancing-type aux_loss \
         --moe-aux-loss-coeff 0.001 \
-        --moe-layer-freq '([1]*48)' \
+        --moe-layer-freq ([1]*48) \
         --moe-router-pre-softmax
         "
 
